@@ -1,0 +1,23 @@
+{
+    "disease_model_relation" : {
+
+        "Pneumonia Prediction (from X-Ray)" : "Pneumonia_Onnx_Model",
+        "Tuberculosis Prediction (from X-Ray)" : "Unavaiable",
+        "Skin Cancer Prediction (from Static Image)" : "Unavailable",
+        "Atelectasis Prediction (from X-Ray)" : "CheXNet_Onnx_Model"
+    },
+
+
+    "model_info" : {
+
+        "Pneumonia_Onnx_Model" : "This is a pneumonia model... It has 88-90% accuracy",
+        "Pneumonia_Javascript_Model" : "This is also pneumonia model",
+        "CheXNet_Onnx_Model" : "This is CheXNet Model"
+    
+    },
+
+    
+    "segmented_output_models" : [
+        "CheXNet_Onnx_Model"
+    ]
+ }
