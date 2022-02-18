@@ -52,7 +52,16 @@ available_diseases = disease_model_relation.keys()
 def main():
 
     # making page structure
-    st.title("Medical Diagnosis Platform")
+    st.title("Medical Diagnosis Platform") 
+    st.subheader("Currently Supporting 14 different disease diagnosis")
+    st.caption("Use dark theme using three horizontal bars on top-right for better experience")
+
+    st.warning("""PLEASE NOTE :- Artificial Inteliigence Models
+            for disease prediction maybe be helpful in diagnosing diseases up to some extend
+            but you should not completely rely on these predictions. Please consult to a doctor
+            for the best possible advice. This project is made to predict the possibility of these
+            diseases, but these predictions may be wrong as well. It is best advice that you use this
+            application for a second test and not rely or trust it completely.""")
 
     selected_disease = st.selectbox(
         label="Select a disease diagnosis task",
@@ -67,6 +76,7 @@ def main():
     
     model_disease_info(
         model = selected_model,
+        model_info = model_info[selected_model],
         disease = selected_disease,
         expander_box = model_disease_info_box
     )
@@ -95,6 +105,7 @@ def main():
             
             predict(
                 model = selected_model,
+                disease = selected_disease,
                 input_buffer = buffer,
                 output_box = output_box,
                 segmented_image_viewer = viewer_columns[2]
@@ -122,6 +133,7 @@ def main():
             
             predict(
                 model = selected_model,
+                disease = selected_disease,
                 input_buffer = buffer,
                 output_box = output_box
             )

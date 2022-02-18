@@ -2,9 +2,21 @@
     "disease_model_relation" : {
 
         "Pneumonia Prediction (from X-Ray)" : "Pneumonia_Onnx_Model",
-        "Tuberculosis Prediction (from X-Ray)" : "Unavaiable",
-        "Skin Cancer Prediction (from Static Image)" : "Unavailable",
-        "Atelectasis Prediction (from X-Ray)" : "CheXNet_Onnx_Model"
+        "Pneumonia Prediction (from X-Ray) (Using CheXNet)" : "CheXNet_Onnx_Model",
+        "Atelectasis Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Cardiomegaly Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Effusion Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Infiltration Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Mass Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Nodule Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Pneumothorax Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Consolidation Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Edema Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Emphysema Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Fibrosis Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Pleural Thickening Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
+        "Hernia Prediction (from X-Ray)" : "CheXNet_Onnx_Model"
+
     },
 
 
@@ -12,12 +24,13 @@
 
         "Pneumonia_Onnx_Model" : "This is a pneumonia model... It has 88-90% accuracy",
         "Pneumonia_Javascript_Model" : "This is also pneumonia model",
-        "CheXNet_Onnx_Model" : "This is CheXNet Model"
+        "CheXNet_Onnx_Model" : "This is CheXNet Model",
+        "Tbnet_Onnx_Model" : "This is tbnet model"
     
     },
 
     
     "segmented_output_models" : [
-        "CheXNet_Onnx_Model"
+        "CheXNet_Onnx_Model_(NOT_WORKING)"
     ]
  }
