@@ -56,7 +56,7 @@ def main():
     st.subheader("Currently Supporting 14 different disease diagnosis")
     st.caption("Use dark theme using three horizontal bars on top-right for better experience")
 
-    st.warning("""PLEASE NOTE :- Artificial Inteliigence Models
+    st.warning("""PLEASE NOTE :- Artificial Intelligence Models
             for disease prediction maybe be helpful in diagnosing diseases up to some extend
             but you should not completely rely on these predictions. Please consult to a doctor
             for the best possible advice. This project is made to predict the possibility of these
