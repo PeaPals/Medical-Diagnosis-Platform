@@ -56,12 +56,7 @@ def main():
     st.subheader("Currently Supporting 14 different disease diagnosis")
     st.caption("Use dark theme using three horizontal bars on top-right for better experience")
 
-    st.warning("""PLEASE NOTE :- Artificial Intelligence Models
-            for disease prediction maybe be helpful in diagnosing diseases up to some extend
-            but you should not completely rely on these predictions. Please consult to a doctor
-            for the best possible advice. This project is made to predict the possibility of these
-            diseases, but these predictions may be wrong as well. It is best advice that you use this
-            application for a second test and not rely or trust it completely.""")
+    st.info("""PLEASE NOTE :- Artificial Intelligence Models for disease prediction maybe be helpful in diagnosing diseases up to some extent but you should not completely rely on these predictions. Please consult your doctor for the best possible advice. This project is made to predict the possibility of these diseases at earlier stages, but these predictions are not 100% accurate.""")
 
     selected_disease = st.selectbox(
         label="Select a disease diagnosis task",
