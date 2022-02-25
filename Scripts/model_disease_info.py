@@ -17,7 +17,7 @@
 
 def model_disease_info(model, model_info, disease, expander_box):
     expander_box.subheader(f"This selected task {disease} is using {model}")
-    expander_box.warning(model_info)
+    expander_box.success(model_info)
 
     # Disclaimer
     expander_box.info("""Models used under this project are state of the art models available on
