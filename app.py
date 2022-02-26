@@ -87,7 +87,7 @@ def main():
 
         buffer = st.file_uploader(
             label = "Upload test file here for disease prediction",
-            type = [".jpg", ".png"],
+            type = [".jpg", ".jpeg", ".png"],
             accept_multiple_files = False,
             on_change = None
         )
@@ -115,7 +115,7 @@ def main():
 
         buffer = viewer_columns[2].file_uploader(
             label = "Upload test file here for disease prediction",
-            type = [".jpg", ".png"],
+            type = [".jpg", ".jpeg", ".png"],
             accept_multiple_files = False,
             on_change = None
         )
