@@ -1,36 +1,37 @@
 {
-    "disease_model_relation" : {
+    "Self Trained": {
+        "model_path": "Models/Pneumonia_Onnx_Model/Pneumonia_Onnx_Model.onnx",
+        "diseases": [
+            ["Pneumonia", 0.9118]
+        ],
 
-        "Pneumonia Prediction (from X-Ray)" : "Pneumonia_Onnx_Model",
-        "Pneumonia Prediction (from X-Ray) (Using CheXNet)" : "CheXNet_Onnx_Model",
-        "Atelectasis Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Cardiomegaly Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Effusion Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Infiltration Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Mass Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Nodule Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Pneumothorax Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Consolidation Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Edema Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Emphysema Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Fibrosis Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Pleural Thickening Prediction (from X-Ray)" : "CheXNet_Onnx_Model",
-        "Hernia Prediction (from X-Ray)" : "CheXNet_Onnx_Model"
-
+        "resize": [500, 500],
+        "reshape": [1, 500, 500, 1],
+        "image_mode": "L"
     },
 
+    "ChexNet (Transfer Learning)": {
+        "model_path": "Models/CheXNet_Onnx_Model/CheXNet_Onnx_Model.onnx",
+        "diseases": [
+            ["Atelectasis", 0.8311],
+            ["Cardiomegaly", 0.9220],
+            ["Effusion", 0.8891],
+            ["Infiltration", 0.7146],
+            ["Mass", 0.8627],
+            ["Nodule", 0.7883],
+            ["Pneumonia", 0.7820],
+            ["Pneumothorax", 0.8844],
+            ["Consolidation", 0.8148],
+            ["Edema", 0.8992],
+            ["Emphysema", 0.9343],
+            ["Fibrosis", 0.8385],
+            ["Pleural", 0.7914],
+            ["Hernia", 0.9206]
+        ],
 
-    "model_info" : {
+        "resize": [256, 256],
+        "reshape": [1, 3, 256, 256],
+        "image_mode": "RGB"
+    }
 
-        "Pneumonia_Onnx_Model" : "This is a pneumonia model... It has 88-90% accuracy",
-        "Pneumonia_Javascript_Model" : "This is also pneumonia model",
-        "CheXNet_Onnx_Model" : "This is CheXNet Model",
-        "Tbnet_Onnx_Model" : "This is tbnet model"
-    
-    },
-
-    
-    "segmented_output_models" : [
-        "CheXNet_Onnx_Model_(NOT_WORKING)"
-    ]
- }
+}

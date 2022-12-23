@@ -1,19 +1,10 @@
-"""
-
-File : app.py
-File_Info : This file contains python streamlit code for main app
-Author : CRP
-License : None
-
-"""
-
 # Dependencies
 
 import streamlit as st
 import json
 
 from Scripts.model_runner import predict
-from Scripts.model_disease_info import model_disease_info
+from Scripts.show_chart import show_charts, show_acc_charts
 
 
 # setting streamlit page configurations
@@ -26,27 +17,18 @@ st.set_page_config(
     menu_items=None
 )
 
-# page_icon=":smiley:"
 
 
-
-#@st.cache(ttl=24*60*60)
-#@st.cache    # no need for ttl ... its static data
 def load_database():
     with open("./database.json") as f:
         database = json.load(f)
 
-    disease_model_relation = database["disease_model_relation"]
-    model_info = database["model_info"]
-    segmented_output_provider = database["segmented_output_models"]
+    return database
 
-    return disease_model_relation, model_info, segmented_output_provider
 
 
 # loading database
-disease_model_relation, model_info, segmented_output_provider = load_database()
-available_diseases = disease_model_relation.keys()
-
+database = load_database()
 
 
 def main():
@@ -58,80 +40,36 @@ def main():
 
     st.info("""PLEASE NOTE :- Artificial Intelligence Models for disease prediction maybe be helpful in diagnosing diseases up to some extent but you should not completely rely on these predictions. Please consult your doctor for the best possible advice. This project is made to predict the possibility of these diseases at earlier stages, but these predictions are not 100% accurate.""")
 
-    selected_disease = st.selectbox(
-        label="Select a disease diagnosis task",
-        options=available_diseases,
-        help="Select a disease diagnosis task"
-    )
-
-    model_disease_info_box = st.expander("Click here to see model and disease info")
-
-    # Model Info Expander
-    selected_model = disease_model_relation[selected_disease]
-    
-    model_disease_info(
-        model = selected_model,
-        model_info = model_info[selected_model],
-        disease = selected_disease,
-        expander_box = model_disease_info_box
-    )
-
     #Prediction Subheading
     st.subheader("Prediction")
-    output_box = st.empty()
+    info_box = st.empty()
 
 
-    if selected_model in segmented_output_provider:
-        viewer_columns = st.columns([0.1, 1, 1])
-        #viewer_columns[1].empty().image("Media/human-lung-disease-prediction-icon.jpg")
+    viewer_columns = st.columns([0.1, 2, 1])
+    #viewer_columns[1].empty().image("Media/human-lung-disease-prediction-icon.jpg")
 
-        buffer = st.file_uploader(
-            label = "Upload test file here for disease prediction",
-            type = [".jpg", ".jpeg", ".png"],
-            accept_multiple_files = False,
-            on_change = None
+    buffer = viewer_columns[2].file_uploader(
+        label = "Upload test file here for disease prediction",
+        type = [".jpg", ".jpeg", ".png"],
+        accept_multiple_files = False,
+        on_change = None
+    )
+
+    info_box.info("No file uploaded")
+
+    if buffer != None:
+        viewer_columns[1].image(buffer, caption="original uploaded image")
+        info_box.warning("Your file is uploaded... Please wait while we predict the output")
+        
+        graph_data = predict(
+            input_buffer = buffer,
+            database = database
         )
 
-        output_box.info("No file uploaded")
+        info_box.info("Predictions are ready... Please look below")
 
-        if buffer != None:
-            viewer_columns[1].image(buffer, caption="original uploaded image")
-            output_box.warning("Your file is uploaded... Please wait while we predict the output")
-            
-            predict(
-                model = selected_model,
-                disease = selected_disease,
-                input_buffer = buffer,
-                output_box = output_box,
-                segmented_image_viewer = viewer_columns[2]
-            )
-
-            # TODO : Add a download button for segment image download
-
-
-    else:
-        viewer_columns = st.columns([0.1, 2, 1])
-        #viewer_columns[1].empty().image("Media/human-lung-disease-prediction-icon.jpg")
-
-        buffer = viewer_columns[2].file_uploader(
-            label = "Upload test file here for disease prediction",
-            type = [".jpg", ".jpeg", ".png"],
-            accept_multiple_files = False,
-            on_change = None
-        )
-
-        output_box.info("No file uploaded")
-
-        if buffer != None:
-            viewer_columns[1].image(buffer, caption="original uploaded image")
-            output_box.warning("Your file is uploaded... Please wait while we predict the output")
-            
-            predict(
-                model = selected_model,
-                disease = selected_disease,
-                input_buffer = buffer,
-                output_box = output_box
-            )
+        show_charts(st.container(), graph_data)
+        show_acc_charts(st.container(), graph_data)
 
 
 main()
