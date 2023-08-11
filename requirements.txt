@@ -1,5 +1,5 @@
-numpy==1.21.0
-onnxruntime==1.9.0
-Pillow==9.0.1
-streamlit==1.1.0
-plotly==5.11.0
+numpy==1.25.2
+onnxruntime==1.15.1
+Pillow==9.5.0
+streamlit==1.25.0
+plotly==5.15.0
